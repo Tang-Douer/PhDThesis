@@ -32,7 +32,7 @@ tf=tf-2; %Fronts number correction
 tt=0:dt:tf;  
 Nt=length(tt);
 
-theta = theta*pi/180+pi/2; %DEG->RAD -90º OFFSET!!!!              %RAD wind direction, can depend on time!! (modify!)
+theta = theta*pi/180+pi/2; %DEG->RAD -90Âº OFFSET!!!!              %RAD wind direction, can depend on time!! (modify!)
 %theta = 0;
 Nds   = 20;              % number of discretized points
 %n=length(s); % time steps (adding 0 (initial) time
@@ -77,7 +77,7 @@ else
     xRef= mean(xi);
     yRef= min(yi);
     %close it
-    %xi(n+1,1)=xi(1,1); %fallava pq si augemntes la dimensió es creen zeros
+    %xi(n+1,1)=xi(1,1); %fallava pq si augemntes la dimensiÃ³ es creen zeros
     %yi(n+1,1)=yi(1,1);
     
 end
@@ -109,11 +109,11 @@ for t=2:1:Nt+1
     
 
     if flag_method==1
-        % FÓRMULA TEORICA- NO VA
+        % FÃ“RMULA TEORICA- NO VA
            xiyi=flipud(xiyi);
                xRef= min(xiyi(:,1));
                yRef= min(xiyi(:,2));
-            A=a.*((xi-xRef).*sin(theta)+(yi-yRef).*cos(theta)); %AQUI corregeixo referència
+            A=a.*((xi-xRef).*sin(theta)+(yi-yRef).*cos(theta)); %AQUI corregeixo referÃ¨ncia
             B=b.*((-(xi-xRef)).*cos(theta)+(yi-yRef).*sin(theta));
             cos_phi=A./sqrt(A.^2+B.^2);
             sin_phi=B./sqrt(A.^2+B.^2);
@@ -122,11 +122,11 @@ for t=2:1:Nt+1
         y(:,t)=y(:,t-1)+dt*(-a.*sin(theta).*cos_phi+b.*cos(theta).*sin_phi+c.*cos(theta));
         
     elseif flag_method==2
-        %FÓRMULA CORRECTA!!!!
+        %FÃ“RMULA CORRECTA!!!!
            xiyi=flipud(xiyi);
                xRef= min(xiyi(:,1));
                yRef= min(xiyi(:,2));
-            A=a.*((xi-xRef).*sin(theta)+(yi-yRef).*cos(theta)); %AQUI corregeixo referència
+            A=a.*((xi-xRef).*sin(theta)+(yi-yRef).*cos(theta)); %AQUI corregeixo referÃ¨ncia
             B=b.*((-(xi-xRef)).*cos(theta)+(yi-yRef).*sin(theta));
             cos_phi=A./sqrt(A.^2+B.^2);
             sin_phi=B./sqrt(A.^2+B.^2);
@@ -136,11 +136,11 @@ for t=2:1:Nt+1
         %xy_fronts{t,2}=xy_fronts{t-1,2}+dt*(a.*cos(theta).*cos_phi+b.*sin(theta).*sin_phi+c.*sin(theta));
         
     else
-        % FÓRMULA ORIGINAL 1990 INTEGRADA PER CENTRED DIFERENCES
+        % FÃ“RMULA ORIGINAL 1990 INTEGRADA PER CENTRED DIFERENCES
         theta_cor=theta-pi/2; %les meves equacions tene un desfasament que cal corregir!! 
         [xy_fronts{t,1}]=huygns_integration(xy_fronts{t-1,1}(:,1),xy_fronts{t-1,1}(:,2),a,b,c,theta_cor,dt);
-        
-        % regridding & loop clipping! NO SÉ QUÈ FER ABANS!!! 
+        //There is no function huygns_integrationï¼Œit can't run.Can you modify itï¼ŸThanks!
+        % regridding & loop clipping! NO SÃ‰ QUÃˆ FER ABANS!!! 
         % looks nicer 1st REGRID +CLIPP (lasts litle longer) CHECK!!! -> TRUE
         
     %%%%%[xy_fronts{t,1}]=regridding(xy_fronts{t,1}(:,1),xy_fronts{t,1}(:,2));
@@ -155,7 +155,7 @@ for t=2:1:Nt+1
         xy_fronts{t,1}=[xy_fronts{t,1};xy_fronts{t,1}(1,:)];
         
         
-        % DEGRIDDING (twice necessary)?¿ why?
+        % DEGRIDDING (twice necessary)?Â¿ why?
 %    fprintf('DEGRID START. Time %d \n',t)
 % !!!!![xy_fronts{t,1},xy_fronts{t,2}]=degridding(xy_fronts{t,1},xy_fronts{t,2});
 %    disp('one done')
