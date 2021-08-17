@@ -1,6 +1,6 @@
-% Script to create huygens expancion for ANY closed initial perimeter
+% Script to create huygens expancion for ANY closed initial perimeter//为任何封闭的初始边界创建Huygens扩展的脚本
 % Need to chance REF system (adapted on equations)!! (centered on the curve!) (previously created only for circular ignition fronts)
-%
+%（以曲线为中心！）（以前仅为圆形点火锋创建）
 % CERTEC-ORios-07/14-
 %
 %   INPUTS
@@ -109,7 +109,7 @@ for t=2:1:Nt+1
     
 
     if flag_method==1
-        % FÓRMULA TEORICA- NO VA
+        % FÓRMULA TEORICA- NO VA //理论公式 - 无 VA
            xiyi=flipud(xiyi);
                xRef= min(xiyi(:,1));
                yRef= min(xiyi(:,2));
@@ -122,7 +122,7 @@ for t=2:1:Nt+1
         y(:,t)=y(:,t-1)+dt*(-a.*sin(theta).*cos_phi+b.*cos(theta).*sin_phi+c.*cos(theta));
         
     elseif flag_method==2
-        %FÓRMULA CORRECTA!!!!
+        %FÓRMULA CORRECTA!!!!// 正确的公式 !!!!
            xiyi=flipud(xiyi);
                xRef= min(xiyi(:,1));
                yRef= min(xiyi(:,2));
