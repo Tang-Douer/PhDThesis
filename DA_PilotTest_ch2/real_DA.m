@@ -1,17 +1,22 @@
 %#########################################################################%
 %       INVERSE METHOD using INVARIANTS and AUTOMATIC DIFFERENTIATED CODE %
+%//      使用不变量和自动微分代码的%逆方法
 %               Oriol Rios 2014                                           %
 %                                                    oriol.rios@upc.edu   %
 %#########################################################################%
-% Using data from AA plot NGARKAT 2008
+% Using data from AA plot NGARKAT 2008//数据来源AA plot NGARKAT 2008
 % need ADiMAt functions at  /usr/adimat-0.5.7-3269-GNU_Linux-i686/share
-% Input observation in a file XY_fire_FM.dat NO
+%//需要的ADiMAt程序在  usr/adimat-0.5.7-3269-GNU_Linux-i686/share（Ubuntu系统下的文件夹??）
+% Input observation in a file XY_fire_FM.dat NO%//文件XY_fire_FM.dat NO//是观测值输入
 % Some parameters (Dd, S...) are both AD_FWD_model and Fwd_model_Inv...
-% treat them better
+%//一些参数(Dd, S...)是AD_FWD_model和Fwd_model_Inv公用的
+% treat them better//对它们好点??
 % Create syntehtic data with the proper time length and displays the Itrue
+%//创建具有适当时间长度的合成数据并显示Itrue
 %------------------------------------------------------------------------
-% aix� ho poso pq ho sé peo ho he de pensar.......
-    %forward_model_syntetic(tf);    %generates the file 'synthetic_data.dat'
+% aixó ho poso pq ho sÃ© peo ho he de pensar.......//我加上这个是因为我知道我必须考虑一下
+    %forward_model_syntetic(tf);//向前模型合成(tf)      
+    %generates the file 'synthetic_data.dat'//生成文件synthetic_data.dat
 %% INPUTS
 
 clear all;
@@ -64,7 +69,7 @@ for ii=1:1:max_iteration % Iteration covergence loop maximum 12 iterations!!
     %[xy_model, Jacobian]=JacAD_expansion_f_scalar(Imfw,U,theta,xiyi,fuel_depth);
     [xy_model(:,ii), Jacobian]=JacAD_expansion_f_2class(Invariants(ii,1), Invariants(ii,2), Invariants(ii,3),xy_real{1,1},fuel_depth, 1, num_t_obs);
     [Cost_total(ii), xy_diff,nan_logic]=real_model_cost(xy_real,xy_model(:,ii));% D'AQUI S?HA DE TREURE el VECTOR (OBS-MOD)
-    % [J ~] = admDiffFor(@expansion_f_simple,Imfw,U,theta,xiyi,fuel_depth);----> AIX� NO VA, FALTA MEM�RIA
+    % [J ~] = admDiffFor(@expansion_f_simple,Imfw,U,theta,xiyi,fuel_depth);----> AIXÖ NO VA, FALTA MEMòRIA
     
     % ------ Delete jacobian's elements that are doubled (first and last node of each front repeated)---------%   
     del_rep=0;
@@ -125,10 +130,10 @@ for ii=1:1:max_iteration % Iteration covergence loop maximum 12 iterations!!
 % solve lineal system 
     ad_p=linsolve(ad_A, ad_B);
  
-    Invariants(ii+1,:)=Invariants(ii,:)+ad_p'; %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CANVIO AIXÖ PER NO SALTAR DE M�?NIM
+    Invariants(ii+1,:)=Invariants(ii,:)+ad_p'; %$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ CANVIO AIXÃ– PER NO SALTAR DE MÃ?NIM
 %% REPASSAR IF NEGATIU
 % % % % %     if any (Invariants(ii+1,:)<=0) % If any invariant is smaller than 0 !!!!
-% % % % %         REPASSAR AIX�OOO
+% % % % %         REPASSAR AIXÖOOO
 % % % % %         disp('ERROR: does not converge (see last I above)!!!!')
 % % % % %         I=Invariants(ii+1,:)
 % % % % %         $$$ CORRECTION WHEN BREAKS BECAUSE NEGATIVE I
@@ -194,7 +199,7 @@ end
 xlabel('distance [m]')
 ylabel('distance [m]')
 legend(hplot, char([1 2:light_plots:ii]))
-%ACABAR AIX�!!!
+%ACABAR AIXÖ!!! //完成这个
 nItem=size(Invariants(1,:));
 str='%.3f ';
 strAll=repmat(str,[1,nItem]);
@@ -302,7 +307,7 @@ title('Forecasted vs Observed')
 % % % % %     xlabel('# iteration')
 % % % % % 
 % % % % % % to mautomatix mazimize the subplot graph 
-% % % % % maximize % es una funció que m'he guardat
+% % % % % maximize % es una funciÃ³ que m'he guardat
 % % % % % suplabel(info_str ,'x'); %plot info
 % % % % % 
 % % % % % figure
@@ -310,7 +315,7 @@ title('Forecasted vs Observed')
 % % % % %     hold on
 % % % % %     for kk=2:1:(length(Invariants(:,1)))
 % % % % %         % % 100 difference
-% % % % %         IvsTrue(kk-1,:)=(Invariants(kk,:)-Invariants(1,:))./Invariants(1,:)*100; % podries dividir pel valor de cada I i així tindries la convergencia relativa!!
+% % % % %         IvsTrue(kk-1,:)=(Invariants(kk,:)-Invariants(1,:))./Invariants(1,:)*100; % podries dividir pel valor de cada I i aixÃ­ tindries la convergencia relativa!!
 % % % % %         h_con(kk-1)=plot(IvsTrue(kk-1,:)', '-x', 'color',cc(kk-1,:));
 % % % % %     end
 % % % % %     %the bar plot will be---->  bar(IvsTrue', 'grouped')
