@@ -5,14 +5,11 @@
 %                                                    oriol.rios@upc.edu   %
 %#########################################################################%
 % Using data from AA plot NGARKAT 2008//数据来源AA plot NGARKAT 2008
-% need ADiMAt functions at  /usr/adimat-0.5.7-3269-GNU_Linux-i686/share
-%//需要的ADiMAt程序在  usr/adimat-0.5.7-3269-GNU_Linux-i686/share（Ubuntu系统下的文件夹??）
+% need ADiMAt functions at  /usr/adimat-0.5.7-3269-GNU_Linux-i686/share//ADiMAt程序在 （Ubuntu系统下的文件夹??）
 % Input observation in a file XY_fire_FM.dat NO%//文件XY_fire_FM.dat NO//是观测值输入
-% Some parameters (Dd, S...) are both AD_FWD_model and Fwd_model_Inv...
-%//一些参数(Dd, S...)是AD_FWD_model和Fwd_model_Inv公用的
-% treat them better//对它们好点??
-% Create syntehtic data with the proper time length and displays the Itrue
-%//创建具有适当时间长度的合成数据并显示Itrue
+% Some parameters (Dd, S...) are both AD_FWD_model and Fwd_model_Inv...//一些参数(Dd, S...)是AD_FWD_model和Fwd_model_Inv公用的
+% treat them better//优化的更好一些
+% Create syntehtic data with the proper time length and displays the Itrue//创建具有适当时间长度的合成数据并显示Itrue
 %------------------------------------------------------------------------
 % aixó ho poso pq ho sÃ© peo ho he de pensar.......//我加上这个是因为我知道我必须考虑一下
     %forward_model_syntetic(tf);//向前模型合成(tf)      
