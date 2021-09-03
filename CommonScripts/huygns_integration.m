@@ -1,8 +1,8 @@
 function [xyout]=huygns_integration(x,y,a,b,c,theta,dt)
-%implemented function from Richards1990 (pag 1168)
-% IMPORTANT! el primer i �ltim valor d'x i y no poden estar DUPLICATS!
-% integrates using Euler and Predictor-Corrector methods along dt
-if isequal([x(end),y(end)],[x(1),y(1)]) %(es pot utilitzar una divisio si es vol acceptar una diferencia ~1)
+%implemented function from Richards1990 (pag 1168)%//从 Richards1990 实现的函数（第 1168 页）
+% IMPORTANT! el primer i últim valor d'x i y no poden estar DUPLICATS!%//重要！ x 和 y 的第一个和最后一个值不能重复！
+% integrates using Euler and Predictor-Corrector methods along dt//沿 dt 使用 Euler 和 Predictor-Corrector 方法进行积分
+if isequal([x(end),y(end)],[x(1),y(1)]) %(es pot utilitzar una divisio si es vol acceptar una diferencia ~1)//（如果要接受差异可以使用除法~1）
     x(end)=[];
     y(end)=[];
     a(end)=[];
